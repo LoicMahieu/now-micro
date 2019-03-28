@@ -25,6 +25,9 @@ module.exports.build = async (context, ...args) => {
     else if (typeof module.exports === 'function') {
       __original_lambda = module.exports
     }
+    else if (typeof module.exports['default'] === 'function') {
+      __original_lambda = module.exports['default']
+    }
     else {
       throw new Error(
         \`now-micro builder expects main export to be a function (\${typeof module.exports} found)\`,
